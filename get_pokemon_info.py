@@ -50,24 +50,24 @@ def main():
             if option is 0:
                 line = line.lower()
                 print(line)
-                poke_na.append(line)
+                poke_na.append(str(line))
                 get_url = url + line
                 resp = requests.get(get_url)
                 #print(resp)
                 j = resp.json()
-                poke_id.append(j['id'])
+                poke_id.append(str(j['id']))
                 print(j['id'])
             elif option is 1:
-                poke_id.append(line)
+                poke_id.append(str(line))
                 get_url = url + line
                 resp = requests.get(get_url)
                 j = resp.json()
-                poke_na.append(j['name'])
+                poke_na.append(str(j['name']))
                 print(j['name'])
     print(poke_id)
     print(poke_na)
     combined = zip(poke_id,poke_na)
-    print(combined)
+    list(combined)
 
 if __name__ == "__main__":
     main()
