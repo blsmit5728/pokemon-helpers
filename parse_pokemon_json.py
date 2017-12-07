@@ -37,6 +37,8 @@ for i in range(1,357):
         print s + "," + data[s]['name']
         ultra_rare_list.append(data[s]['name'])
     
+
 print create_pgan_command(rare_list)
 print create_pgan_command(very_rare_list)
 print create_pgan_command(ultra_rare_list)
+
