@@ -2,6 +2,21 @@ import sys
 import json
 from pprint import pprint
 
+def create_pgan_command(poke_list, iv="", lvl=""):
+    str__pgan = "!set " 
+    str_pgan_iv = iv
+    str_pgan_lvl = lvl   
+    for i in poke_list:
+        if str_pgan_iv != "" and str_pgan_lvl == "":
+            str__pgan = str__pgan + i + " " + str_pgan_iv + ","
+        elif str_pgan_iv == "" and str_pgan_lvl != "":
+            str__pgan = str__pgan + i + " " + str_pgan_lvl + ","
+        elif str_pgan_iv != "" and str_pgan_lvl != "":
+            str__pgan = str__pgan + i + " " + str_pgan_iv + " " + str_pgan_lvl + ","
+        else:
+            str__pgan = str__pgan + i + ", "
+    print str__pgan
+
 rare_list = []
 very_rare_list = []
 ultra_rare_list = []
@@ -22,44 +37,6 @@ for i in range(1,357):
         print s + "," + data[s]['name']
         ultra_rare_list.append(data[s]['name'])
     
-str_rare_pgan = "!set " 
-str_pgan_iv = ""
-str_pgan_lvl = ""   
-for i in rare_list:
-    if str_pgan_iv != "" and str_pgan_lvl == "":
-        str_rare_pgan = str_rare_pgan + i + " " + str_pgan_iv + ","
-    elif str_pgan_iv == "" and str_pgan_lvl != "":
-        str_rare_pgan = str_rare_pgan + i + " " + str_pgan_lvl + ","
-    elif str_pgan_iv != "" and str_pgan_lvl != "":
-        str_rare_pgan = str_rare_pgan + i + " " + str_pgan_iv + " " + str_pgan_lvl + ","
-    else:
-        str_rare_pgan = str_rare_pgan + i + ", "
-print str_rare_pgan
-
-str_very_rare_pgan = "!set " 
-str_pgan_iv = ""
-str_pgan_lvl = ""   
-for i in very_rare_list:
-    if str_pgan_iv != "" and str_pgan_lvl == "":
-        str_very_rare_pgan = str_very_rare_pgan + i + " " + str_pgan_iv + ","
-    elif str_pgan_iv == "" and str_pgan_lvl != "":
-        str_very_rare_pgan = str_very_rare_pgan + i + " " + str_pgan_lvl + ","
-    elif str_pgan_iv != "" and str_pgan_lvl != "":
-        str_very_rare_pgan = str_very_rare_pgan + i + " " + str_pgan_iv + " " + str_pgan_lvl + ","
-    else:
-        str_very_rare_pgan = str_very_rare_pgan + i + ", "
-print str_very_rare_pgan
-
-str_ultra_rare_pgan = "!set " 
-str_pgan_iv = ""
-str_pgan_lvl = ""   
-for i in ultra_rare_list:
-    if str_pgan_iv != "" and str_pgan_lvl == "":
-        str_ultra_rare_pgan = str_ultra_rare_pgan + i + " " + str_pgan_iv + ","
-    elif str_pgan_iv == "" and str_pgan_lvl != "":
-        str_ultra_rare_pgan = str_ultra_rare_pgan + i + " " + str_pgan_lvl + ","
-    elif str_pgan_iv != "" and str_pgan_lvl != "":
-        str_ultra_rare_pgan = str_ultra_rare_pgan + i + " " + str_pgan_iv + " " + str_pgan_lvl + ","
-    else:
-        str_ultra_rare_pgan = str_ultra_rare_pgan + i + ", "
-print str_ultra_rare_pgan
+print create_pgan_command(rare_list)
+print create_pgan_command(very_rare_list)
+print create_pgan_command(ultra_rare_list)
